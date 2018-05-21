@@ -141,7 +141,7 @@ class FCEE:
                     commenter_name = comment['from']['name']
                     commenter_id = comment['from']['id']
                     if self.csv == True:
-                        self.write_email('{0}, {1}, {2}'.format(email, commenter_name, commenter_id))
+                        self.write_email('{0},{1},{2}'.format(email, commenter_name, commenter_id))
                     else:
                         self.write_email('{0} - {1} ({2})'.format(email, commenter_name, commenter_id))                        
                     email_count += 1
@@ -152,7 +152,7 @@ class FCEE:
 
     def extract_email(self, data):
         #extracting emails from comment
-        match = re.findall(r'[\w\.-]+@[\w\.-]+', data)
+        match = re.findall(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', data)
         return match
 
     def api_error_handler(self, http_response):
@@ -175,8 +175,9 @@ class FCEE:
 
     def get_extracted_posts(self, indentifier):
         #get extracted posts list
-        page_file_path = 'exports/{0}.txt'.format(self.indentifier)
+        match = []
+        page_file_path = 'exports/page/{0}.txt'.format(self.indentifier)
         page_file = Path(page_file_path)
         if page_file.is_file():        
             match = re.findall(r'\[(.+)\]', page_file.read_text())
-        return match        
+        return match  
