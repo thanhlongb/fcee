@@ -1,8 +1,8 @@
 # What is this?
-Basically, this is a tool which allow you to collect emails from Facebook fanpages or posts comments.
+Basically, this is a tool which allow you to collect emails from Facebook fanpages and posts comments.
 # How to use?
-1. **make a Facebook app** and get the **App's ID and Secret key**.
-2. Place them in **FB_ACCESS_TOKEN** variable (line 16, `MailScraper.py`) like this:
+1. **Make a Facebook app** and get the **App's ID and Secret key**. (google it)
+2. Place them in **FB_ACCESS_TOKEN** constant (line 16, `MailScraper.py`) like this:
 
    > FB_ACCESS_TOKEN = "APP_ID|APP_SECRET"
 
